@@ -21,5 +21,12 @@ Prüfe die restlichen Vorschläge für das Business Object, ob sie so in Ordnung
 Publishing des Services Bindings.<br>
 Teste die APP mit der Anlage eines Datensatzes.<br>
 Gültige Produkt-IDs oder vorhandene Mengen aus dem S/4 System sind (noch) nicht bekannt.<br>
+<br>
+<br>
+**Business Object Type pflegen
+Unser Business Object Type wurde zwar richtig als Business Objekt angelegt. Es fehlt aber ein Code.<br>
+<details><summary>Object Type Code</summary><img width="1528" height="353" alt="image" src="https://github.com/user-attachments/assets/c5b05401-304b-41ee-825c-f4be67b9404a" /></details><br>
+Lege einen Code für das Object fest. Prüfe es im Relation Explorer.<br>
+
 
 
