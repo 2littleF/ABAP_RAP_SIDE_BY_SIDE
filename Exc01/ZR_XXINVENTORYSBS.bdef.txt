@@ -13,6 +13,10 @@ authorization master ( global )
   field ( readonly )
   UUID,
   InventoryID,
+  BgpfStatus,
+  BgpgProcessName,
+  Quantity,
+  QuantityUnit,
   LocalCreatedBy,
   LocalCreatedAt,
   LocalLastChangedBy,
