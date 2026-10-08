@@ -1,0 +1,115 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'InventoryID'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'InventoryID'
+annotate view ZC_XXINVENTORYSBS with
+{
+  @UI.facet: [ {
+    label: 'Allgemeine Informationen', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 10 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  
+  @EndUserText.label: 'InventoryID'
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'InventoryID'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'InventoryID'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  InventoryID;
+  
+  @EndUserText.label: 'ProductID'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'ProductID'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'ProductID'
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  ProductID;
+  
+  @EndUserText.label: 'Quantity'
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'Quantity'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 , 
+    label: 'Quantity'
+  } ]
+  @UI.selectionField: [ {
+    position: 40 
+  } ]
+  Quantity;
+  
+  @EndUserText.label: 'Price'
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'Price'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 , 
+    label: 'Price'
+  } ]
+  @UI.selectionField: [ {
+    position: 50 
+  } ]
+  Price;
+  
+  @EndUserText.label: 'Remark'
+  @UI.identification: [ {
+    position: 60 , 
+    label: 'Remark'
+  } ]
+  @UI.lineItem: [ {
+    position: 60 , 
+    label: 'Remark'
+  } ]
+  @UI.selectionField: [ {
+    position: 60 
+  } ]
+  Remark;
+  
+  @EndUserText.label: 'BgpfStatus'
+  @UI.identification: [ {
+    position: 70 , 
+    label: 'BgpfStatus'
+  } ]
+  @UI.lineItem: [ {
+    position: 70 , 
+    label: 'BgpfStatus'
+  } ]
+  @UI.selectionField: [ {
+    position: 70 
+  } ]
+  BgpfStatus;
+  
+  @EndUserText.label: 'BgpgProcessName'
+  @UI.identification: [ {
+    position: 80 , 
+    label: 'BgpgProcessName'
+  } ]
+  @UI.lineItem: [ {
+    position: 80 , 
+    label: 'BgpgProcessName'
+  } ]
+  @UI.selectionField: [ {
+    position: 80 
+  } ]
+  BgpgProcessName;
+  
+
+}

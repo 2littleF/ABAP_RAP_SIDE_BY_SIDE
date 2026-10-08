@@ -1,0 +1,46 @@
+CLASS LHC_ZR_XXINVENTORYSBS DEFINITION INHERITING FROM CL_ABAP_BEHAVIOR_HANDLER.
+  PRIVATE SECTION.
+    METHODS:
+      GET_GLOBAL_AUTHORIZATIONS FOR GLOBAL AUTHORIZATION
+        IMPORTING
+           REQUEST requested_authorizations FOR Inventory
+        RESULT result,
+      NewInventoryID FOR DETERMINE ON SAVE
+            keys FOR Inventory~NewInventoryID.
+ENDCLASS.
+
+CLASS LHC_ZR_XXINVENTORYSBS IMPLEMENTATION.
+  METHOD GET_GLOBAL_AUTHORIZATIONS.
+  ENDMETHOD.
+  METHOD NewInventoryID.
+
+    READ ENTITIES OF zr_xxinventorysbs IN LOCAL MODE
+    ENTITY Inventory
+    FIELDS ( InventoryID )
+    WITH CORRESPONDING #( keys )
+    RESULT DATA(inventories).
+
+    DELETE DUPLICATES FROM inventories COMPARING %tky.
+
+    DELETE inventories WHERE InventoryID IS NOT INITIAL.
+
+    IF inventories IS INITIAL.
+      RETURN.
+    ENDIF.
+
+    SELECT SINGLE FROM zxxinventorysbs FIELDS MAX( inventory_id ) INTO @DATA(max_inventory).
+
+    MODIFY ENTITIES OF zr_xxinventorysbs IN LOCAL MODE
+        ENTITY Inventory
+        UPDATE FIELDS ( InventoryID )
+        WITH VALUE #( FOR inventory IN inventories INDEX INTO i
+                        ( %tky = inventory-%tky
+                        InventoryID = max_inventory + i )
+                    )
+        REPORTED DATA(update_reported).
+
+    reported = CORRESPONDING #( DEEP update_reported ).
+
+  ENDMETHOD.
+
+ENDCLASS.
