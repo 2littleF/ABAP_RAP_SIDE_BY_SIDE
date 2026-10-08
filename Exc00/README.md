@@ -15,5 +15,11 @@ Die allgemeinen Prefix und Suffix können leer bleiben, außer auf dem System si
 Gib dem CDS den Alias Inventory.<br>
 Prüfe die restlichen Vorschläge für das Business Object, ob sie so in Ordnung sind.<br>
 <details><summary>Generator Zusammenfassung</summary><img width="1267" height="1493" alt="image" src="https://github.com/user-attachments/assets/210df0b9-b5c2-4575-aa02-88a18aa26c04" /></details><br>
+<br>
+<br>
+**Preview<br>
+Publishing des Services Bindings.<br>
+Teste die APP mit der Anlage eines Datensatzes.<br>
+Gültige Produkt-IDs oder vorhandene Mengen aus dem S/4 System sind (noch) nicht bekannt.<br>
 
 
