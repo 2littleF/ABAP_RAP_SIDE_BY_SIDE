@@ -18,10 +18,10 @@ define table zxxinventorysbs {
   remark                : abap.char(256);
   bgpf_status           : abap.int1;
   bgpg_process_name     : abap.char(32);
-  created_by            : syuname;
-  created_at            : timestampl;
-  last_changed_by       : syuname;
-  last_changed_at       : timestampl;
-  local_last_changed_at : timestampl;
+  local_created_by      : abp_creation_user;
+  local_created_at      : abp_creation_tstmpl;
+  local_last_changed_by : abp_locinst_lastchange_user;
+  local_last_changed_at : abp_locinst_lastchange_tstmpl;
+  last_changed_at       : abp_lastchange_tstmpl;
 
 }
