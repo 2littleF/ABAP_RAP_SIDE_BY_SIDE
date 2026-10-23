@@ -1,0 +1,138 @@
+"! @testing BDEF:ZR_XXINVENTORYSBS
+CLASS ltcl_inventory DEFINITION FINAL FOR TESTING
+  DURATION SHORT
+  RISK LEVEL HARMLESS.
+
+  PRIVATE SECTION.
+
+    CLASS-DATA:
+      class_under_test     TYPE REF TO lhc_zr_xxinventorysbs,
+      cds_test_environment TYPE REF TO if_cds_test_environment,
+      inventory_mock       TYPE TABLE OF zxxinventorysbs.
+
+    CLASS-METHODS:
+      class_setup,
+      class_teardown.
+    METHODS:
+      setup,
+      teardown.
+    METHODS:
+      test_id_for_create FOR TESTING RAISING cx_static_check,
+      test_Create        FOR TESTING RAISING cx_static_check.
+ENDCLASS.
+
+
+CLASS ltcl_inventory IMPLEMENTATION.
+
+  METHOD class_setup.
+    cds_test_environment = cl_cds_test_environment=>create_for_multiple_cds(
+                      i_for_entities = VALUE #(
+                        (   i_for_entity = 'ZR_XXINVENTORYSBS'
+                            i_dependency_list = VALUE #( ( 'ZXXINVENTORYSBS' ) )
+                        )
+                      )
+  ).
+    cds_test_environment->enable_double_redirection( ).
+  ENDMETHOD.
+
+  METHOD class_teardown.
+    cds_test_environment->destroy( ).
+  ENDMETHOD.
+
+  METHOD setup.
+    inventory_mock = VALUE #( ( inventory_id = '10' uuid = cl_system_uuid=>create_uuid_x16_static( ) remark = 'Vorhanden' )
+                         ( uuid = cl_system_uuid=>create_uuid_x16_static( ) remark = 'Neu' )
+                        ).
+    cds_test_environment->clear_doubles(  ).
+    cds_test_environment->insert_test_data( inventory_mock ).
+  ENDMETHOD.
+
+  METHOD teardown.
+    ROLLBACK ENTITIES.
+  ENDMETHOD.
+
+  METHOD test_id_for_create.
+
+    " Die fehlende ID in den Mockdaten muss gefüllt werden
+
+    SELECT FROM zr_xxinventorysbs
+        FIELDS COUNT( * )
+        INTO @DATA(anzahl).
+
+    cl_abap_unit_assert=>assert_equals(
+      EXPORTING
+        act                  = anzahl
+        exp                  = 2
+        msg                  = 'Testdatensatz nicht gefunden'
+    ).
+
+    DATA: reported TYPE RESPONSE FOR REPORTED LATE zr_xxinventorysbs.
+
+    CREATE OBJECT class_under_test FOR TESTING.
+
+    class_under_test->newinventoryid(
+      EXPORTING
+        keys     = CORRESPONDING #( inventory_mock )
+      CHANGING
+        reported = reported
+    ).
+
+    COMMIT ENTITIES RESPONSE OF zr_xxinventorysbs
+        FAILED DATA(commit_failed)
+        REPORTED DATA(commit_reported).
+
+    cl_abap_unit_assert=>assert_initial( act = commit_failed msg = 'Commit Failed nicht leer' ).
+    cl_abap_unit_assert=>assert_initial( act = commit_reported msg = 'Commit Reported nicht leer' ).
+
+    SELECT FROM zr_xxinventorysbs
+    FIELDS *
+    WHERE InventoryID IS NOT INITIAL
+    INTO TABLE @DATA(inventory_sbs).
+
+    SORT inventory_sbs BY InventoryID ASCENDING.
+    cl_abap_unit_assert=>assert_equals( act = inventory_sbs[ 1 ]-InventoryID exp = '10' msg = 'InventoryID 10 falsch' ).
+    cl_abap_unit_assert=>assert_equals( act = inventory_sbs[ 2 ]-InventoryID exp = '11' msg = 'InventoryID 11 falsch' ).
+
+  ENDMETHOD.
+
+  METHOD test_create.
+
+    "Anlegen eines neuen Datensatzes, die InventoryID muss gefüllt sein
+
+    MODIFY ENTITIES OF zr_xxinventorysbs
+        ENTITY Inventory
+            CREATE FIELDS ( remark )
+                WITH VALUE #( (  %cid = 'Neu'
+                            remark = 'Create Test' )
+                            )
+        MAPPED DATA(mapped)
+        FAILED DATA(failed)
+        REPORTED DATA(reported).
+
+    cl_abap_unit_assert=>assert_initial( act = failed msg = 'Failed nicht leer' ).
+    cl_abap_unit_assert=>assert_initial( act = reported msg = 'Reported nicht leer' ).
+
+    cl_abap_unit_assert=>assert_not_initial( act = mapped-inventory msg = 'Mapped leer' ).
+
+    COMMIT ENTITIES RESPONSE OF zr_xxinventorysbs
+        FAILED DATA(commit_failed)
+        REPORTED DATA(commit_reported).
+
+    cl_abap_unit_assert=>assert_initial( act = commit_failed msg = 'Commit Failed nicht leer' ).
+    cl_abap_unit_assert=>assert_initial( act = commit_reported msg = 'Commit Reported nicht leer' ).
+
+    DATA(new_uuid) = mapped-inventory[ 1 ]-uuid.
+
+    "Der neue Datensatz muss die ID = 11 haben, da der höchste gefüllte Mock die 10 hat
+    SELECT FROM zr_xxinventorysbs
+        FIELDS *
+        WHERE uuid = @new_uuid
+        INTO TABLE @DATA(inventory_neu).
+
+    cl_abap_unit_assert=>assert_not_initial( act = inventory_neu msg = 'Inventory leer' ).
+    cl_abap_unit_assert=>assert_equals( act = inventory_neu[ 1 ]-InventoryID exp = '11' msg = 'Inventory ID falsch' ).
+
+
+  ENDMETHOD.
+
+ENDCLASS.
