@@ -1,0 +1,28 @@
+@AccessControl.authorizationCheck: #NOT_REQUIRED --Exc03
+@Metadata.allowExtensions: true
+@EndUserText.label: 'Entwurfs-Query-Sicht für ZXXNVENTORYSBS_D'
+define root view entity ZD_XXINVENTORYSBS_QUERY
+  as select from zxxnventorysbs_d
+{
+  key uuid as UUID,
+  inventoryid as InventoryID,
+  productid as ProductID,
+  quantity as Quantity,
+  quantityunit as QuantityUnit,
+  price as Price,
+  currencycode as CurrencyCode,
+  remark as Remark,
+  bgpfstatus as BgpfStatus,
+  bgpgprocessname as BgpgProcessName,
+  localcreatedby as LocalCreatedBy,
+  localcreatedat as LocalCreatedAt,
+  locallastchangedby as LocalLastChangedBy,
+  locallastchangedat as LocalLastChangedAt,
+  lastchangedat as LastChangedAt,
+  draftentitycreationdatetime as draftentitycreationdatetime,
+  draftentitylastchangedatetime as draftentitylastchangedatetime,
+  draftadministrativedatauuid as draftadministrativedatauuid,
+  draftentityoperationcode as draftentityoperationcode,
+  hasactiveentity as hasactiveentity,
+  draftfieldchanges as draftfieldchanges
+}

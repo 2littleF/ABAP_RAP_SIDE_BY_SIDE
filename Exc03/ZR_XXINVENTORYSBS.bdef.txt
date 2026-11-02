@@ -1,0 +1,62 @@
+managed implementation in class ZBP_R_XXINVENTORYSBS unique;
+strict ( 2 );
+with collaborative draft; //Exc03
+extensible;
+define behavior for ZR_XXINVENTORYSBS alias Inventory
+persistent table zxxinventorysbs
+extensible
+draft table zxxnventorysbs_d query ZD_XXINVENTORYSBS_QUERY //Exc03
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master ( global )
+{
+  field ( readonly )
+  UUID,
+  InventoryID,
+  BgpfStatus,
+  BgpgProcessName,
+  Quantity,
+  QuantityUnit,
+  LocalCreatedBy,
+  LocalCreatedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt,
+  LastChangedAt;
+
+  field ( numbering : managed )
+  UUID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+  draft action Share; //Exc03
+
+  determination NewInventoryID on save { create; }
+
+  mapping for zxxinventorysbs corresponding extensible
+    {
+      UUID               = UUID;
+      InventoryID        = INVENTORY_ID;
+      ProductID          = PRODUCT_ID;
+      Quantity           = QUANTITY;
+      QuantityUnit       = QUANTITY_UNIT;
+      Price              = PRICE;
+      CurrencyCode       = CURRENCY_CODE;
+      Remark             = REMARK;
+      BgpfStatus         = BGPF_STATUS;
+      BgpgProcessName    = BGPG_PROCESS_NAME;
+      LocalCreatedBy     = LOCAL_CREATED_BY;
+      LocalCreatedAt     = LOCAL_CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+    }
+
+}
