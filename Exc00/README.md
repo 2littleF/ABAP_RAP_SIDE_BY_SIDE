@@ -31,6 +31,7 @@ Unser Business Object Type wurde zwar richtig als Business Objekt angelegt. Es f
 <details><summary>Object Type Code</summary><img width="1528" height="353" alt="image" src="https://github.com/user-attachments/assets/c5b05401-304b-41ee-825c-f4be67b9404a" /></details>
 
 Lege einen Code für das Object fest. Prüfe es im Relation Explorer.<br>
+Prüfe, ob die Annotation in den CDS @ObjectModel.sapObjectNodeType.name: 'ZXXINVENTORYSBS' auf das Objekt verweist.
 
 
 
