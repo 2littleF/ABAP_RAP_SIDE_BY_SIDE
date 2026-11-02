@@ -1,6 +1,5 @@
-# Paket und Tabelle anlegen, RAP aus Tabelle generieren<br>
-<br>
-## Paket anlegen<br>
+# Paket und Tabelle anlegen, RAP aus Tabelle generieren
+## Paket anlegen
 Lege das Paket ZXXRAPSIDEBYSIDE als Unterpaket in den lokalen Objekten an<br>
 <br>
 <br>
