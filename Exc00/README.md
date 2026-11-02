@@ -12,9 +12,9 @@ Nutze den Generator um das Framework einer RAP-Anwendung für die Inventory-Tabe
 
 <details><summary>Generator</summary><img width="1492" height="1139" alt="image" src="https://github.com/user-attachments/assets/f1db3ec7-ec70-40e9-88c2-35dbce5d4e2e" /></details>
 
-Die allgemeinen Prefix und Suffix können leer bleiben, außer auf dem System sind die Namen bereits vergeben.
-Gib dem CDS den Alias Inventory.
-Prüfe die restlichen Vorschläge für das Business Object, ob sie so in Ordnung sind.
+Die allgemeinen Prefix und Suffix können leer bleiben, außer auf dem System sind die Namen bereits vergeben.<br>
+Gib dem CDS den Alias Inventory.<br>
+Prüfe die restlichen Vorschläge für das Business Object, ob sie so in Ordnung sind.<br>
 
 <details><summary>Generator Zusammenfassung</summary><img width="1267" height="1493" alt="image" src="https://github.com/user-attachments/assets/210df0b9-b5c2-4575-aa02-88a18aa26c04" /></details>
 
