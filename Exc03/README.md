@@ -10,4 +10,4 @@
 ** Prüfung der kollaborativen Arbeit<br>
 Öffne die Preview und duppliziere den Tab. Gebe parallel in die Tabs Werte ein.<br>
 Wer gewinnt zum Schluss?<br>
-![alt text](image.png)
+<br>
