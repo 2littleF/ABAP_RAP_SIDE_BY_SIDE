@@ -11,3 +11,5 @@
 Öffne die Preview und duppliziere den Tab. Gebe parallel in die Tabs Werte ein.<br>
 Wer gewinnt zum Schluss?<br>
 <br>
+<br>
+<img alt="Collaborative Draft" src="./image-1.png" width="100%">
