@@ -1,0 +1,67 @@
+@Metadata.allowExtensions: true
+@Metadata.ignorePropagatedAnnotations: true
+@EndUserText: {
+  label: '###GENERATED Core Data Service Entity'
+}
+@ObjectModel: {
+  sapObjectNodeType.name: 'ZXXINVENTORYSBS',
+  semanticKey: [ 'InventoryID' ] --Exc00
+}
+@AccessControl.authorizationCheck: #MANDATORY
+define root view entity ZC_XXINVENTORYSBS
+  provider contract transactional_query
+  as projection on ZR_XXINVENTORYSBS
+  association [1..1] to ZR_XXINVENTORYSBS as _BaseEntity on $projection.UUID = _BaseEntity.UUID
+{
+  key UUID,
+  InventoryID,
+  ProductID,
+  @Semantics: {
+    quantity.unitOfMeasure: 'QuantityUnit'
+  }
+  Quantity,
+  @Consumption: {
+    valueHelpDefinition: [ {
+      entity.element: 'UnitOfMeasure', 
+      entity.name: 'I_UnitOfMeasureStdVH', 
+      useForValidation: true
+    } ]
+  }
+  QuantityUnit,
+  @Semantics: {
+    amount.currencyCode: 'CurrencyCode'
+  }
+  Price,
+  @Consumption: {
+    valueHelpDefinition: [ {
+      entity.element: 'Currency', 
+      entity.name: 'I_CurrencyStdVH', 
+      useForValidation: true
+    } ]
+  }
+  CurrencyCode,
+  Remark,
+  BgpfStatus,
+  BgpgProcessName,
+  @Semantics: {
+    user.createdBy: true
+  }
+  LocalCreatedBy,
+  @Semantics: {
+    systemDateTime.createdAt: true
+  }
+  LocalCreatedAt,
+  @Semantics: {
+    user.localInstanceLastChangedBy: true
+  }
+  LocalLastChangedBy,
+  @Semantics: {
+    systemDateTime.localInstanceLastChangedAt: true
+  }
+  LocalLastChangedAt,
+  @Semantics: {
+    systemDateTime.lastChangedAt: true
+  }
+  LastChangedAt,
+  _BaseEntity
+}
