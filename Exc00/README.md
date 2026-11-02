@@ -1,14 +1,14 @@
 # Paket und Tabelle anlegen, RAP aus Tabelle generieren<br>
 <br>
-**Paket anlegen**<br>
+##Paket anlegen<br>
 Lege das Paket ZXXRAPSIDEBYSIDE als Unterpaket in den lokalen Objekten an<br>
 <br>
 <br>
-**Tabelle anlegen**<br>
+##Tabelle anlegen<br>
 Lege die Tabelle ZXXINVENTORYSBS im Paket an<br>
 <br>
 <br>
-**Generate ABAP Repository Objects<br>
+##Generate ABAP Repository Objects<br>
 Nutze den Generator um das Framework einer RAP-Anwendung für die Inventory-Tabelle zu erzeugen<br>
 <details><summary>Generator</summary><img width="1492" height="1139" alt="image" src="https://github.com/user-attachments/assets/f1db3ec7-ec70-40e9-88c2-35dbce5d4e2e" /></details><br>
 Die allgemeinen Prefix und Suffix können leer bleiben, außer auf dem System sind die Namen bereits vergeben.<br>
@@ -18,13 +18,13 @@ Prüfe die restlichen Vorschläge für das Business Object, ob sie so in Ordnung
 <br>
 Füge in die CDS einen semantischen Schlüssel für InventoryID dazu<br>
 <br>
-**Preview<br>
+##Preview<br>
 Publishing des Services Bindings.<br>
 Teste die APP mit der Anlage eines Datensatzes.<br>
 Gültige Produkt-IDs oder vorhandene Mengen aus dem S/4 System sind (noch) nicht bekannt.<br>
 <br>
 <br>
-**Business Object Type pflegen
+##Business Object Type pflegen
 Unser Business Object Type wurde zwar richtig als Business Objekt angelegt. Es fehlt aber ein Code.<br>
 <details><summary>Object Type Code</summary><img width="1528" height="353" alt="image" src="https://github.com/user-attachments/assets/c5b05401-304b-41ee-825c-f4be67b9404a" /></details><br>
 Lege einen Code für das Object fest. Prüfe es im Relation Explorer.<br>
