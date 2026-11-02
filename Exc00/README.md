@@ -3,11 +3,11 @@
 Lege das Paket ZXXRAPSIDEBYSIDE als Unterpaket in den lokalen Objekten an<br>
 <br>
 <br>
-## Tabelle anlegen<br>
+## Tabelle anlegen
 Lege die Tabelle ZXXINVENTORYSBS im Paket an<br>
 <br>
 <br>
-## Generate ABAP Repository Objects<br>
+## Generate ABAP Repository Objects
 Nutze den Generator um das Framework einer RAP-Anwendung für die Inventory-Tabelle zu erzeugen<br>
 <details><summary>Generator</summary><img width="1492" height="1139" alt="image" src="https://github.com/user-attachments/assets/f1db3ec7-ec70-40e9-88c2-35dbce5d4e2e" /></details><br>
 Die allgemeinen Prefix und Suffix können leer bleiben, außer auf dem System sind die Namen bereits vergeben.<br>
@@ -17,7 +17,7 @@ Prüfe die restlichen Vorschläge für das Business Object, ob sie so in Ordnung
 <br>
 Füge in die CDS einen semantischen Schlüssel für InventoryID dazu<br>
 <br>
-## Preview<br>
+## Preview
 Publishing des Services Bindings.<br>
 Teste die APP mit der Anlage eines Datensatzes.<br>
 Gültige Produkt-IDs oder vorhandene Mengen aus dem S/4 System sind (noch) nicht bekannt.<br>
